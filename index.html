@@ -211,7 +211,8 @@
 </style>
 </head>
 
-<body>
+<body  itemscope itemtype="http://schema.org/TechArticle">
+  <div itemprop="articleBody">
 <section id="abstract">
   <p>JSON is a useful data serialization and messaging format.
     This specification defines JSON-LD, a JSON-based format to serialize
@@ -222,6 +223,7 @@
     programming environments, to build interoperable Web services, and to
     store Linked Data in JSON-based storage engines.</p>
 </section>
+</div>
 
 <section id="sotd">
   <p>This document has been developed by the
@@ -457,39 +459,39 @@
         JSON document.</p>
   </section>
 
-  <section class="normative">
+  <section class="normative" itemscope itemtype="http://www.w3.org/2004/02/skos/core#">
     <h2>Syntax Tokens and Keywords</h2>
 
     <p>JSON-LD specifies a number of syntax tokens and <a>keywords</a>
     that are a core part of the language:</p>
 
-    <dl data-sort>
-      <dt><code>@context</code></dt>
-      <dd>Used to define the short-hand names that are used throughout a JSON-LD
+    <dl data-sort itemscope itemtype="http://www.w3.org/2004/02/skos/core#">
+      <dt itemprop="Concept"><code>@context</code></dt>
+      <dd itemprop="definition">Used to define the short-hand names that are used throughout a JSON-LD
         document. These short-hand names are called <a>terms</a> and help
         developers to express specific identifiers in a compact manner. The
         <code>@context</code> keyword is described in detail in
         <a class="sectionRef" href="#the-context"></a>.</dd>
-      <dt><code>@id</code></dt>
-      <dd>Used to uniquely identify <a>node objects</a> that are being described in the document
+      <dt itemprop="Concept"><code>@id</code></dt>
+      <dd itemprop="definition">UUsed to uniquely identify <a>node objects</a> that are being described in the document
         with <a>IRIs</a> or
         <a>blank node identifiers</a>. This keyword
         is described in <a class="sectionRef" href="#node-identifiers"></a>.</dd>
-      <dt><code>@value</code></dt>
-      <dd>Used to specify the data that is associated with a particular
+      <dt itemprop="Concept"><code>@value</code></dt>
+      <dd itemprop="definition">UUsed to specify the data that is associated with a particular
         <a>property</a> in the graph. This keyword is described in
         <a class="sectionRef" href="#string-internationalization"></a> and
         <a class="sectionRef" href="#typed-values"></a>.</dd>
-      <dt><code>@language</code></dt>
-      <dd>Used to specify the language for a particular string value or the default
+      <dt itemprop="Concept"><code>@language</code></dt>
+      <dd itemprop="definition">UUsed to specify the language for a particular string value or the default
         language of a JSON-LD document. This keyword is described in
         <a class="sectionRef" href="#string-internationalization"></a>.</dd>
-      <dt><code>@type</code></dt>
-      <dd>Used to set the data type of a <a>node</a> or
+      <dt itemprop="Concept"><code>@type</code></dt>
+      <dd itemprop="definition">UUsed to set the data type of a <a>node</a> or
         <a>typed value</a>. This keyword is described in
         <a class="sectionRef" href="#typed-values"></a>.</dd>
-      <dt><code>@container</code></dt>
-      <dd>Used to set the default container type for a <a>term</a>.
+      <dt itemprop="Concept"><code>@container</code></dt>
+      <dd itemprop="definition">UUsed to set the default container type for a <a>term</a>.
         This keyword is described in the following sections:
         <ul>
         <li><a class="sectionRef" href="#sets-and-lists"></a>,</li>
@@ -501,49 +503,49 @@
         <li class="changed"><a class="sectionRef" href="#named-graph-indexing"></a>, and</li>
         <li class="changed"><a class="sectionRef" href="#named-graph-data-indexing"></a></li>
         </ul></dd>
-      <dt><code>@list</code></dt>
-      <dd>Used to express an ordered set of data.
+      <dt itemprop="Concept"><code>@list</code></dt>
+      <dd itemprop="definition">UUsed to express an ordered set of data.
         This keyword is described in <a class="sectionRef" href="#lists"></a>.</dd>
-      <dt><code>@set</code></dt>
-      <dd>Used to express an unordered set of data and to ensure that values are always
+      <dt itemprop="Concept"><code>@set</code></dt>
+      <dd itemprop="definition">UUsed to express an unordered set of data and to ensure that values are always
          represented as arrays. This keyword is described in
          <a class="sectionRef" href="#sets"></a>.</dd>
-      <dt><code>@reverse</code></dt>
-      <dd>Used to express reverse properties. This keyword is described in
+      <dt itemprop="Concept"><code>@reverse</code></dt>
+      <dd itemprop="definition">UUsed to express reverse properties. This keyword is described in
         <a class="sectionRef" href="#reverse-properties"></a>.</dd>
-      <dt><code>@index</code></dt>
-      <dd>Used to specify that a container is used to index information and
+      <dt itemprop="Concept"><code>@index</code></dt>
+      <dd itemprop="definition">UUsed to specify that a container is used to index information and
         that processing should continue deeper into a JSON data structure.
         This keyword is described in <a class="sectionRef" href="#data-indexing"></a>.</dd>
-      <dt><code>@base</code></dt>
-      <dd>Used to set the <a>base IRI</a> against which to resolve those <a>relative IRIs</a>
+      <dt itemprop="Concept"><code>@base</code></dt>
+      <dd itemprop="definition">UUsed to set the <a>base IRI</a> against which to resolve those <a>relative IRIs</a>
         interpreted relative to the document.
         This keyword is described in <a class="sectionRef" href="#base-iri"></a>.</dd>
-      <dt><code>@vocab</code></dt>
-      <dd>Used to expand properties and values in <code>@type</code> with a common prefix
+      <dt itemprop="Concept"><code>@vocab</code></dt>
+      <dd itemprop="definition">UUsed to expand properties and values in <code>@type</code> with a common prefix
         <a>IRI</a>. This keyword is described in <a class="sectionRef" href="#default-vocabulary"></a>.</dd>
-      <dt><code>@graph</code></dt><dd>Used to express a <a>graph</a>.
+      <dt itemprop="Concept"><code>@graph</code></dt><dd itemprop="definition">UUsed to express a <a>graph</a>.
         This keyword is described in <a class="sectionRef" href="#named-graphs"></a>.</dd>
-      <dt class="changed"><code>@nest</code></dt><dd class="changed">Collects a set of <a>nested properties</a> within
+      <dt class="changed" itemprop="Concept"><code>@nest</code></dt><dd itemprop="definition" class="changed">Collects a set of <a>nested properties</a> within
         a <a>node object</a>.</dd>
-      <dt class="changed"><code>@none</code></dt><dd class="changed">Used as an index value
+      <dt class="changed" itemprop="Concept"><code>@none</code></dt><dd itemprop="definition" class="changed">Used as an index value
         in an <a>id map</a>, <a>language map</a>, <a>type map</a>, or elsewhere where a dictionary is
         used to index into other values.</dd>
-      <dt class="changed"><code>@prefix</code></dt><dd class="changed">
+      <dt class="changed" itemprop="Concept"><code>@prefix</code></dt><dd itemprop="definition" class="changed">
         With the value <a>true</a>, allows this <a>term</a> to be used to construct a <a>compact IRI</a>
         when compacting.</dd>
-      <dt class="changed"><code>@version</code></dt><dd class="changed">
+      <dt class="changed" itemprop="Concept"><code>@version</code></dt><dd itemprop="definition" class="changed">
         Used in a <a>context definition</a> to set the <a>processing mode</a>.
         New features since <a data-cite="JSON-LD">JSON-LD 1.0</a> [[!JSON-LD]] described in this specification are
         only available when <a>processing mode</a> has been explicitly set to
         <code>json-ld-1.1</code>.
       </dd>
-      <dt><code>:</code></dt>
-      <dd>The separator for JSON keys and values that use
+      <dt itemprop="Concept"><code>:</code></dt>
+      <dd itemprop="definition">The separator for JSON keys and values that use
         <a>compact IRIs</a>.</dd>
     </dl>
 
-    <p>All keys, <a>keywords</a>, and values in JSON-LD are case-sensitive.</p>
+    <p itemprop="note">All keys, <a>keywords</a>, and values in JSON-LD are case-sensitive.</p>
   </section>
 </section>
 
@@ -610,10 +612,10 @@
     used to represent <code>http://purl.org/dc/terms/title</code>.</p>
 </section>
 
-<section class="informative">
-  <h1>Basic Concepts</h1>
+<section class="informative" itemscope itemtype="http://www.w3.org/2004/02/skos/core#">
+  <h1 itemprop="Concept">Basic Concepts</h1>
 
-  <p>JSON [[RFC8259]] is a lightweight, language-independent data interchange format.
+  <p itemprop="definition">JSON [[RFC8259]] is a lightweight, language-independent data interchange format.
     It is easy to parse and easy to generate. However, it is difficult to integrate JSON
     from different sources as the data may contain keys that conflict with other
     data sources. Furthermore, JSON has no
@@ -621,7 +623,7 @@
     the Web. Let's start by looking at an example that we will be using for the
     rest of this section:</p>
 
-  <pre class="example" data-transform="updateExample"
+  <pre itemscope itemtype="http://schema.org/Code" class="example" data-transform="updateExample"
        title="Sample JSON document">
   <!--
   {
@@ -654,7 +656,8 @@
   <p>Leveraging the popular <a href="http://schema.org/">schema.org vocabulary</a>,
     the example above could be unambiguously expressed as follows:</p>
 
-  <aside class="example ds-selector-tabs"
+  <aside itemprop="example"
+   class="example ds-selector-tabs"
          title="Sample JSON-LD document using full IRIs instead of terms">
     <div class="selectors">
       <button class="selected" data-selects="expanded">Expanded</button>
@@ -662,7 +665,7 @@
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="expanded selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded selected nohighlight" data-transform="updateExample">
     <!--
     {
       "****http://schema.org/name****": "Manu Sporny",
@@ -671,7 +674,7 @@
     }
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Sample JSON-LD document using full IRIs instead of terms-expanded"
            data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -681,7 +684,7 @@
         <tr><td>_:b0</td><td>schema:url</td><td>http://manu.sporny.org/</td></tr>
       </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Sample JSON-LD document using full IRIs instead of terms-expanded"
          data-transform="updateExample"
@@ -699,7 +702,7 @@
     </pre>
   </aside>
 
-  <p>In the example above, every property is unambiguously identified by an <a>IRI</a> and all values
+  <p itemprop="note">In the example above, every property is unambiguously identified by an <a>IRI</a> and all values
     representing <a>IRIs</a> are explicitly marked as such by the
     <code>@id</code> <a>keyword</a>. While this is a valid JSON-LD
     document that is very specific about its data, the document is also overly verbose and difficult
@@ -707,7 +710,7 @@
     of a <a>context</a> as described in the next section.</p>
 
   <section class="informative">
-    <h2>The Context</h2>
+    <h2 itemprop="Concept">The Context</h2>
 
     <p>When two people communicate with one another, the conversation takes
     place in a shared environment, typically called
@@ -718,15 +721,15 @@
     terms to communicate with one another more efficiently, but without
     losing accuracy.</p>
 
-    <p>Simply speaking, a <a>context</a> is used to map <a>terms</a> to
+    <p itemprop="definition">Simply speaking, a <a>context</a> is used to map <a>terms</a> to
       <a>IRIs</a>. <a>Terms</a> are case sensitive
       and any valid <a>string</a> that is not a reserved JSON-LD <a>keyword</a>
       can be used as a <a>term</a>.</p>
 
-    <p>For the sample document in the previous section, a <a>context</a> would
+    <p itemprop="example">For the sample document in the previous section, a <a>context</a> would
       look something like this:</p>
 
-    <pre class="example nohighlight" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="example nohighlight" data-transform="updateExample"
          data-context-for="Sample JSON document"
          title="Context for the sample document in the previous section">
     <!--
@@ -746,7 +749,7 @@
     -->
     </pre>
 
-    <p>As the <a>context</a> above shows, the value of a <a>term definition</a> can
+    <p itemprop="note">As the <a>context</a> above shows, the value of a <a>term definition</a> can
       either be a simple string, mapping the <a>term</a> to an <a>IRI</a>,
       or a <a>dictionary</a>.</p>
 
@@ -770,7 +773,7 @@
       it can be referenced by adding a single line and allows a JSON-LD document to
       be expressed much more concisely as shown in the example below:</p>
 
-    <aside class="example ds-selector-tabs"
+    <aside itemprop="example" class="example ds-selector-tabs"
            title="Referencing a JSON-LD context">
       <div class="selectors">
         <button class="selected" data-selects="original">Original</button>
@@ -779,7 +782,7 @@
         <button data-selects="turtle">Turtle</button>
         <a class="playground" target="_blank"></a>
       </div>
-      <pre class="original selected nohighlight" data-transform="updateExample">
+      <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
       <!--
       {
         ****"@context": "https://json-ld.org/contexts/person.jsonld",****
@@ -789,7 +792,7 @@
       }
       -->
       </pre>
-      <pre class="expanded nohighlight"
+      <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
            data-transform="updateExample"
            data-result-for="Referencing a JSON-LD context-original">
       <!--
@@ -800,7 +803,7 @@
       }]
       -->
       </pre>
-      <table class="statements"
+      <table itemprop="example" class="statements"
              data-result-for="Referencing a JSON-LD context-expanded"
              data-to-rdf>
         <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -810,7 +813,7 @@
           <tr><td>_:b0</td><td>foaf:img</td><td>http://manu.sporny.org/images/manu.png</td></tr>
         </tbody>
       </table>
-      <pre class="turtle"
+      <pre itemscope itemtype="http://schema.org/Code" class="turtle"
            data-content-type="text/turtle"
            data-result-for="Referencing a JSON-LD context-expanded"
            data-transform="updateExample"
@@ -852,7 +855,7 @@
       absence of a connection to the Web. Ultimately, this is a modeling decision
       and different use cases may require different handling.</p>
 
-    <aside class="example ds-selector-tabs"
+    <aside itemprop="example" class="example ds-selector-tabs"
            title="In-line context definition">
       <div class="selectors">
         <button class="selected" data-selects="original">Original</button>
@@ -861,7 +864,7 @@
         <button data-selects="turtle">Turtle</button>
         <a class="playground" target="_blank"></a>
       </div>
-      <pre class="original selected nohighlight" data-transform="updateExample">
+      <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
       <!--
       {
         ****"@context": {
@@ -881,7 +884,7 @@
       }
       -->
       </pre>
-      <pre class="expanded nohighlight" data-transform="updateExample"
+      <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight" data-transform="updateExample"
            data-result-for="In-line context definition-original">
       <!--
       [{
@@ -891,7 +894,7 @@
       }]
       -->
       </pre>
-      <table class="statements"
+      <table itemprop="example" class="statements"
              data-result-for="In-line context definition-expanded"
              data-to-rdf>
         <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -901,7 +904,7 @@
           <tr><td>_:b0</td><td>schema:url</td><td>http://manu.sporny.org/</td></tr>
         </tbody>
       </table>
-      <pre class="turtle"
+      <pre itemscope itemtype="http://schema.org/Code" class="turtle"
            data-content-type="text/turtle"
            data-result-for="In-line context definition-expanded"
            data-transform="updateExample"
@@ -952,7 +955,7 @@
   <p>A <a>string</a> is interpreted as an <a>IRI</a> when it is the
     value of an <a>dictionary member</a> with the key<code>@id</code>:</p>
 
-  <pre class="example nohighlight" data-transform="updateExample"
+  <pre itemscope itemtype="http://schema.org/Code" class="example nohighlight" data-transform="updateExample"
        title="Values of @id are interpreted as IRI">
   <!--
   {
@@ -971,7 +974,7 @@
     information on where  <a>relative IRIs</a> can be
     used, please refer to section <a href="#json-ld-grammar"></a>).</p>
 
-  <pre class="example nohighlight" data-transform="updateExample"
+  <pre itemscope itemtype="http://schema.org/Code" class="example nohighlight" data-transform="updateExample"
        title="IRIs can be relative">
   <!--
   {
@@ -985,7 +988,7 @@
   <p><a>Absolute IRIs</a> can be expressed directly
     in the key position like so:</p>
 
-  <pre class="example nohighlight" data-transform="updateExample"
+  <pre itemscope itemtype="http://schema.org/Code" class="example nohighlight" data-transform="updateExample"
        title="IRI as a key">
   <!--
   {
@@ -1011,7 +1014,7 @@
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "****@context****": {
@@ -1022,7 +1025,7 @@
     }
     -->
     </pre>
-    <pre class="expanded nohighlight" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight" data-transform="updateExample"
          data-result-for="Term expansion from context definition-original">
     <!--
     [{
@@ -1030,7 +1033,7 @@
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Term expansion from context definition-expanded"
            data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -1038,7 +1041,7 @@
         <tr><td>_:b0</td><td>schema:name</td><td>Manu Sporny</td></tr>
       </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Term expansion from context definition-expanded"
          data-transform="updateExample"
@@ -1069,7 +1072,7 @@
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {****
       "@context": {
@@ -1086,7 +1089,7 @@
     }
     -->
     </pre>
-    <pre class="expanded nohighlight" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight" data-transform="updateExample"
          data-result-for="Type coercion-original">
     <!--
     [{
@@ -1094,7 +1097,7 @@
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Type coercion-expanded"
            data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -1102,7 +1105,7 @@
         <tr><td>_:b0</td><td>schema:url</td><td>http://manu.sporny.org/</td></tr>
       </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Type coercion-expanded"
          data-transform="updateExample"
@@ -1169,7 +1172,7 @@
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -1182,7 +1185,7 @@
     }
     -->
     </pre>
-    <pre class="expanded nohighlight" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight" data-transform="updateExample"
          data-result-for="Identifying a node-original">
     <!--
     [{
@@ -1191,7 +1194,7 @@
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Identifying a node-expanded"
            data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -1199,7 +1202,7 @@
         <tr><td>http://me.markus-lanthaler.com/</td><td>schema:name</td><td>Markus Lanthaler</td></tr>
       </tbody>
     </table>
-    <pre class="turtle nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle nohighlight"
          data-content-type="text/turtle"
          data-result-for="Identifying a node-expanded"
          data-transform="updateExample"
@@ -1248,7 +1251,7 @@
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -1264,7 +1267,7 @@
     }
     -->
     </pre>
-    <pre class="expanded nohighlight" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight" data-transform="updateExample"
          data-result-for="Specifying the type for a node-original">
     <!--
     [{
@@ -1275,7 +1278,7 @@
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Specifying the type for a node-expanded"
            data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -1285,7 +1288,7 @@
         <tr><td>http://me.markus-lanthaler.com/</td><td>schema:familyName</td><td>Lanthaler</td></tr>
       </tbody>
     </table>
-    <pre class="turtle nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle nohighlight"
          data-content-type="text/turtle"
          data-result-for="Specifying the type for a node-expanded"
          data-transform="updateExample"
@@ -1312,7 +1315,7 @@
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       ####...####
@@ -1325,7 +1328,7 @@
     }
     -->
     </pre>
-    <pre class="expanded nohighlight" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight" data-transform="updateExample"
          data-result-for="Specifying multiple types for a node-original">
     <!--
     [{
@@ -1334,7 +1337,7 @@
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Specifying multiple types for a node-expanded"
            data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -1343,7 +1346,7 @@
         <tr><td>http://me.markus-lanthaler.com/</td><td>rdf:type</td><td>foaf:Person</td></tr>
       </tbody>
     </table>
-    <pre class="turtle nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle nohighlight"
          data-content-type="text/turtle"
          data-result-for="Specifying multiple types for a node-expanded"
          data-transform="updateExample"
@@ -1369,7 +1372,7 @@
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -1382,7 +1385,7 @@
     }
     -->
     </pre>
-    <pre class="expanded nohighlight" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight" data-transform="updateExample"
          data-result-for="Using a term to specify the type-original">
     <!--
     [{
@@ -1391,7 +1394,7 @@
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Using a term to specify the type-expanded"
            data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -1399,7 +1402,7 @@
         <tr><td>http://example.org/places#BrewEats</td><td>rdf:type</td><td>schema:Person</td></tr>
       </tbody>
     </table>
-    <pre class="turtle nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle nohighlight"
          data-content-type="text/turtle"
          data-result-for="Using a term to specify the type-expanded"
          data-transform="updateExample"
@@ -1472,7 +1475,7 @@
         <button data-selects="turtle">Turtle</button>
         <a class="playground" target="_blank"></a>
       </div>
-      <pre class="original selected nohighlight" data-transform="updateExample">
+      <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
       <!--
       {
         "@context": {
@@ -1486,7 +1489,7 @@
       }
       -->
       </pre>
-      <pre class="expanded nohighlight" data-transform="updateExample"
+      <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight" data-transform="updateExample"
            data-result-for="Referencing Objects on the Web-original">
       <!--
       [{
@@ -1497,7 +1500,7 @@
       }]
       -->
       </pre>
-      <table class="statements"
+      <table itemprop="example" class="statements"
              data-result-for="Referencing Objects on the Web-expanded"
              data-to-rdf>
         <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -1507,7 +1510,7 @@
           <tr><td>http://manu.sporny.org/about#manu</td><td>schema:knows</td><td>http://greggkellogg.net/foaf#me</td></tr>
         </tbody>
       </table>
-      <pre class="turtle nohighlight"
+      <pre itemscope itemtype="http://schema.org/Code" class="turtle nohighlight"
            data-content-type="text/turtle"
            data-result-for="Referencing Objects on the Web-expanded"
            data-transform="updateExample"
@@ -1542,7 +1545,7 @@
         <button data-selects="turtle">Turtle</button>
         <a class="playground" target="_blank"></a>
       </div>
-      <pre class="original selected nohighlight" data-transform="updateExample"
+      <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample"
            title="Embedding Objects">
       <!--
       {
@@ -1560,7 +1563,7 @@
       }
       -->
       </pre>
-      <pre class="expanded nohighlight" data-transform="updateExample"
+      <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight" data-transform="updateExample"
            data-result-for="Embedding Objects-original">
       <!--
       [{
@@ -1575,7 +1578,7 @@
       }]
       -->
       </pre>
-      <table class="statements"
+      <table itemprop="example" class="statements"
              data-result-for="Embedding Objects-expanded"
              data-to-rdf>
         <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -1587,7 +1590,7 @@
           <tr><td>http://manu.sporny.org/about#manu</td><td>schema:knows</td><td>http://greggkellogg.net/foaf#me</td></tr>
         </tbody>
       </table>
-      <pre class="turtle nohighlight"
+      <pre itemscope itemtype="http://schema.org/Code" class="turtle nohighlight"
            data-content-type="text/turtle"
            data-result-for="Embedding Objects-expanded"
            data-transform="updateExample"
@@ -1642,7 +1645,7 @@
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     [
       {
@@ -1663,7 +1666,7 @@
     ]
     -->
     </pre>
-    <pre class="expanded nohighlight" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight" data-transform="updateExample"
          data-result-for="Using multiple contexts-original">
     <!--
     [{
@@ -1688,7 +1691,7 @@
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Using multiple contexts-expanded"
            data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th><th>Value Type</th></tr></thead>
@@ -1703,7 +1706,7 @@
         <tr><td>_:b1</td><td>schema:geo</td><td>_:b2</td><td></td></tr>
       </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Using multiple contexts-expanded"
          data-transform="updateExample"
@@ -1745,7 +1748,7 @@
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       ****"@context": {
@@ -1763,7 +1766,7 @@
     }
     -->
     </pre>
-    <pre class="expanded nohighlight" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight" data-transform="updateExample"
          data-result-for="Scoped contexts within node objects-original">
     <!--
     [{
@@ -1776,7 +1779,7 @@
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Scoped contexts within node objects-expanded"
            data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -1786,7 +1789,7 @@
         <tr><td>_:b0</td><td>http://example.com/person#name</td><td>Markus Lanthaler</td></tr>
       </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Scoped contexts within node objects-expanded"
          data-transform="updateExample"
@@ -1834,7 +1837,7 @@
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       ****"@context": [
@@ -1849,7 +1852,7 @@
     }
     -->
     </pre>
-    <pre class="expanded nohighlight" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight" data-transform="updateExample"
          data-result-for="Combining external and local contexts-original">
     <!--
     [{
@@ -1861,7 +1864,7 @@
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Combining external and local contexts-expanded"
            data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th><th>Value Type</th></tr></thead>
@@ -1871,7 +1874,7 @@
         <tr><td>_:b0</td><td>foaf:depiction</td><td>http://twitter.com/account/profile_image/manusporny</td><td>xsd:string</td></tr>
       </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Combining external and local contexts-expanded"
          data-transform="updateExample"
@@ -1909,7 +1912,7 @@
     This may be set using the <code>@version</code> <a>member</a> in a <code>context</code>
     set to the value <code>1.1</code> as a <a>number</a>, or through an API option.</p>
 
-  <pre class="example nohighlight" data-transform="updateExample"
+  <pre itemscope itemtype="http://schema.org/Code" class="example nohighlight" data-transform="updateExample"
        title="Setting @version in context">
   <!--
   {
@@ -1950,7 +1953,7 @@
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -1963,7 +1966,7 @@
     }
     -->
     </pre>
-    <pre class="expanded nohighlight" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight" data-transform="updateExample"
          data-result-for="Using a common vocabulary prefix-original">
     <!--
     [{
@@ -1973,7 +1976,7 @@
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Using a common vocabulary prefix-expanded"
            data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -1982,7 +1985,7 @@
         <tr><td>http://example.org/places#BrewEats</td><td>schema:name</td><td>Brew Eats</td></tr>
       </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Using a common vocabulary prefix-expanded"
          data-transform="updateExample"
@@ -2012,7 +2015,7 @@
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
       {
         "@context": {
@@ -2026,7 +2029,7 @@
       }
     -->
     </pre>
-    <pre class="expanded nohighlight" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight" data-transform="updateExample"
          data-result-for="Using the null keyword to ignore data-original">
     <!--
     [{
@@ -2036,7 +2039,7 @@
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Using the null keyword to ignore data-expanded"
            data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -2045,7 +2048,7 @@
         <tr><td>http://example.org/places#BrewEats</td><td>schema:name</td><td>Brew Eats</td></tr>
       </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Using the null keyword to ignore data-expanded"
          data-transform="updateExample"
@@ -2069,7 +2072,7 @@
       objects</a>, to use the <a>base IRI</a> to create <a>absolute
       IRIs</a>.</p>
 
-  <pre class="example nohighlight" data-transform="updateExample"
+  <pre itemscope itemtype="http://schema.org/Code" class="example nohighlight" data-transform="updateExample"
        title="Using &quot;&quot; as the vocabulary mapping"
        data-base="http://example/document">
   <!--
@@ -2097,7 +2100,7 @@
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="expanded selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded selected nohighlight" data-transform="updateExample">
     <!--
     [{
       "@id": "http://example.org/places#BrewEats",
@@ -2106,7 +2109,7 @@
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Using &quot;&quot; as the vocabulary mapping (expanded)-expanded"
            data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -2115,7 +2118,7 @@
         <tr><td>http://example.org/places#BrewEats</td><td>http://example/document#name</td><td>Brew Eats</td></tr>
       </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Using &quot;&quot; as the vocabulary mapping (expanded)-expanded"
          data-transform="updateExample"
@@ -2141,7 +2144,7 @@
   <p>For example, if a JSON-LD document was retrieved from <code>http://example.com/document.jsonld</code>,
     relative IRIs would resolve against that IRI:</p>
 
-  <pre class="example nohighlight" data-transform="updateExample"
+  <pre itemscope itemtype="http://schema.org/Code" class="example nohighlight" data-transform="updateExample"
        title="Use a relative IRI as node identifier">
     <!--
     {
@@ -2168,7 +2171,7 @@
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -2180,7 +2183,7 @@
     }
     -->
     </pre>
-    <pre class="expanded nohighlight" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight" data-transform="updateExample"
          data-result-for="Setting the document base in a document-original">
     <!--
     [{
@@ -2189,7 +2192,7 @@
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Setting the document base in a document-expanded"
            data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -2197,7 +2200,7 @@
         <tr><td>http://example.com/document.jsonld</td><td>rdfs:label</td><td>Just a simple document</td></tr>
       </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Setting the document base in a document-expanded"
          data-transform="updateExample"
@@ -2243,7 +2246,7 @@
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "****@context****": {
@@ -2256,7 +2259,7 @@
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Prefix expansion-original">
     <!--
@@ -2266,7 +2269,7 @@
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Prefix expansion-expanded"
            data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -2275,7 +2278,7 @@
         <tr><td>_:b0</td><td>foaf:name</td><td>Dave Longley</td></tr>
       </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Prefix expansion-expanded"
          data-transform="updateExample"
@@ -2320,7 +2323,7 @@
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -2338,7 +2341,7 @@
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Using vocabularies-original">
     <!--
@@ -2357,7 +2360,7 @@
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Using vocabularies-expanded"
            data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -2368,7 +2371,7 @@
         <tr><td>http://me.markus-lanthaler.com/</td><td>foaf:homepage</td><td>http://www.markus-lanthaler.com/</td></tr>
       </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Using vocabularies-expanded"
          data-transform="updateExample"
@@ -2417,7 +2420,7 @@
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -2431,7 +2434,7 @@
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Using explicit @prefix declaration to create compact IRIs-original">
     <!--
@@ -2445,7 +2448,7 @@
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Using explicit @prefix declaration to create compact IRIs-expanded"
            data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -2454,7 +2457,7 @@
         <tr><td>_:b0</td><td>http://example.com/property</td><td>http://example.com/compact-iris-are-considered</td></tr>
       </tbody>
     </table>
-    <pre class="turtle nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle nohighlight"
          data-content-type="text/turtle"
          data-result-for="Using explicit @prefix declaration to create compact IRIs-expanded"
          data-transform="updateExample"
@@ -2497,7 +2500,7 @@
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -2511,7 +2514,7 @@
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Aliasing keywords-original">
     <!--
@@ -2522,7 +2525,7 @@
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Aliasing keywords-expanded"
            data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -2531,7 +2534,7 @@
         <tr><td>http://example.com/about#gregg</td><td>foaf:name</td><td>Gregg Kellogg</td></tr>
       </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Aliasing keywords-expanded"
          data-transform="updateExample"
@@ -2558,7 +2561,7 @@
     This is used by the <a data-cite="JSON-LD11-API#compaction-algorithm">Compaction algorithm</a> to ensure that the values of @type (or an alias)
     are always represented in an <a>array</a>.</p>
 
-  <pre class="example" data-transform="updateExample" title="Setting @container: @set on @type">
+  <pre itemscope itemtype="http://schema.org/Code" class="example" data-transform="updateExample" title="Setting @container: @set on @type">
   <!--
   {
     "@context": {
@@ -2584,7 +2587,7 @@
     there are no circular dependencies. For example, it is common to use
     the <code>xsd</code> namespace when defining <a>typed values</a>:</p>
 
-<pre class="example nohighlight" data-transform="updateExample"
+<pre itemscope itemtype="http://schema.org/Code" class="example nohighlight" data-transform="updateExample"
      title="IRI expansion within a context">
 <!--
 {
@@ -2612,7 +2615,7 @@
 <p><a>Terms</a> may also be used when defining the IRI of another
 <a>term</a>:</p>
 
-<pre class="example nohighlight" data-transform="updateExample"
+<pre itemscope itemtype="http://schema.org/Code" class="example nohighlight" data-transform="updateExample"
      title="Using a term to define the IRI of another term within a context">
 <!--
 {
@@ -2638,7 +2641,7 @@
   and <a>IRIs</a> may be used on the left-hand side of a
   <a>term</a> definition.</p>
 
-<pre class="example nohighlight" data-transform="updateExample"
+<pre itemscope itemtype="http://schema.org/Code" class="example nohighlight" data-transform="updateExample"
      title="Using a compact IRI as a term">
 <!--
 {
@@ -2675,7 +2678,7 @@ specified. The full <a>IRI</a> for
 <a>Absolute IRIs</a> may also be used in the key position in a <a>context</a>:
 </p>
 
-<pre class="example nohighlight" data-transform="updateExample"
+<pre itemscope itemtype="http://schema.org/Code" class="example nohighlight" data-transform="updateExample"
      title="Associating context definitions with absolute IRIs">
 <!--
 {
@@ -2715,7 +2718,7 @@ specified. The full <a>IRI</a> for
   definition of <em>term2</em> if <em>term2</em> also depends on
   <em>term1</em>. For example, the following <a>context</a> definition
   is illegal:</p>
-<pre class="illegal-example nohighlight" data-transform="updateExample"
+<pre itemscope itemtype="http://schema.org/Code" class="illegal-example nohighlight" data-transform="updateExample"
      data-ignore
      title="Illegal circular definition of terms within a context">
 <!--
@@ -2749,7 +2752,7 @@ specified. The full <a>IRI</a> for
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -2769,7 +2772,7 @@ specified. The full <a>IRI</a> for
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Defining an @context within a term definition-original">
     <!--
@@ -2785,7 +2788,7 @@ specified. The full <a>IRI</a> for
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Defining an @context within a term definition-expanded"
            data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -2795,7 +2798,7 @@ specified. The full <a>IRI</a> for
         <tr><td>_:b0</td><td>schema:name</td><td>Manu Sporny</td></tr>
         <tr><td>_:b0</td><td>foaf:interest</td><td>https://www.w3.org/TR/json-ld11/</td></tr>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Defining an @context within a term definition-expanded"
          data-transform="updateExample"
@@ -2829,7 +2832,7 @@ specified. The full <a>IRI</a> for
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -2853,7 +2856,7 @@ specified. The full <a>IRI</a> for
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Defining an @context within a term definition used on @type-original">
     <!--
@@ -2871,7 +2874,7 @@ specified. The full <a>IRI</a> for
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Defining an @context within a term definition used on @type-expanded"
            data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -2884,7 +2887,7 @@ specified. The full <a>IRI</a> for
         <tr><td>_:b0</td><td>foaf:interest</td><td>https://www.w3.org/TR/json-ld11/</td></tr>
       </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Defining an @context within a term definition used on @type-expanded"
          data-transform="updateExample"
@@ -2966,7 +2969,7 @@ type with a particular <a>term</a> in the <code>@context</code>:</p>
     <button data-selects="turtle">Turtle</button>
     <a class="playground" target="_blank"></a>
   </div>
-  <pre class="original selected nohighlight" data-transform="updateExample">
+  <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
   <!--
   {
     ****"@context": {
@@ -2982,7 +2985,7 @@ type with a particular <a>term</a> in the <code>@context</code>:</p>
   }
   -->
   </pre>
-  <pre class="expanded nohighlight"
+  <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
        data-transform="updateExample"
        data-result-for="Expanded term definition with type coercion-original">
   <!--
@@ -2997,7 +3000,7 @@ type with a particular <a>term</a> in the <code>@context</code>:</p>
   }]
   -->
   </pre>
-  <table class="statements"
+  <table itemprop="example" class="statements"
          data-result-for="Expanded term definition with type coercion-expanded"
          data-to-rdf>
     <thead><tr><th>Subject</th><th>Property</th><th>Value</th><th>Value Type</th></tr></thead>
@@ -3005,7 +3008,7 @@ type with a particular <a>term</a> in the <code>@context</code>:</p>
       <tr><td>http://example.com/docs/1</td><td>dc:modified</td><td>2010-05-29T14:17:39+02:00</td><td>xsd:dateTime</td></tr>
     </tbody>
   </table>
-  <pre class="turtle"
+  <pre itemscope itemtype="http://schema.org/Code" class="turtle"
        data-content-type="text/turtle"
        data-result-for="Expanded term definition with type coercion-expanded"
        data-transform="updateExample"
@@ -3035,7 +3038,7 @@ in the body of a JSON-LD document:</p>
     <button data-selects="turtle">Turtle</button>
     <a class="playground" target="_blank"></a>
   </div>
-  <pre class="original selected nohighlight" data-transform="updateExample">
+  <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
   <!--
   {
     "@context": {
@@ -3052,7 +3055,7 @@ in the body of a JSON-LD document:</p>
   }
   -->
   </pre>
-  <pre class="expanded nohighlight"
+  <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
        data-transform="updateExample"
        data-result-for="Expanded value with type-original">
   <!--
@@ -3066,7 +3069,7 @@ in the body of a JSON-LD document:</p>
   }]
   -->
   </pre>
-  <table class="statements"
+  <table itemprop="example" class="statements"
          data-result-for="Expanded value with type-expanded"
          data-to-rdf>
     <thead><tr><th>Subject</th><th>Property</th><th>Value</th><th>Value Type</th></tr></thead>
@@ -3074,7 +3077,7 @@ in the body of a JSON-LD document:</p>
       <tr><td>_:b0</td><td>dc:modified</td><td>2010-05-29T14:17:39+02:00</td><td>xsd:dateTime</td></tr>
     </tbody>
   </table>
-  <pre class="turtle"
+  <pre itemscope itemtype="http://schema.org/Code" class="turtle"
        data-content-type="text/turtle"
        data-result-for="Expanded value with type-expanded"
        data-transform="updateExample"
@@ -3103,7 +3106,7 @@ in the body of a JSON-LD document:</p>
   <dfn>value type</dfn> specifies the data type of a particular value, such
   as an integer, a floating point number, or a date.</p>
 
-<pre id="context-sensitivity-for-type"
+<pre itemscope itemtype="http://schema.org/Code" id="context-sensitivity-for-type"
      class="example nohighlight" data-transform="updateExample"
      title="Example demonstrating the context-sensitivity for @type">
 <!--
@@ -3164,7 +3167,7 @@ in the body of a JSON-LD document:</p>
   </tr>
   </tbody>
   </table>
-  <pre class="turtle nohighlight"
+  <pre itemscope itemtype="http://schema.org/Code" class="turtle nohighlight"
        data-content-type="text/turtle"
        data-result-for="Example demonstrating the context-sensitivity for @type"
        data-transform="updateExample"
@@ -3222,7 +3225,7 @@ the data type to be specified explicitly with each piece of data.</p>
     <button data-selects="turtle">Turtle</button>
     <a class="playground" target="_blank"></a>
   </div>
-  <pre class="original selected nohighlight" data-transform="updateExample">
+  <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
   <!--
   {
     "@context": {
@@ -3247,7 +3250,7 @@ the data type to be specified explicitly with each piece of data.</p>
   }
   -->
   </pre>
-  <pre class="expanded nohighlight"
+  <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
        data-transform="updateExample"
        data-result-for="Expanded term definition with types-original">
   <!--
@@ -3266,7 +3269,7 @@ the data type to be specified explicitly with each piece of data.</p>
   }]
   -->
   </pre>
-  <table class="statements"
+  <table itemprop="example" class="statements"
          data-result-for="Expanded term definition with types-expanded"
          data-to-rdf>
   <thead><tr>
@@ -3302,7 +3305,7 @@ the data type to be specified explicitly with each piece of data.</p>
   </tr>
 </tbody>
   </table>
-  <pre class="turtle nohighlight"
+  <pre itemscope itemtype="http://schema.org/Code" class="turtle nohighlight"
        data-content-type="text/turtle"
        data-result-for="Expanded term definition with types-expanded"
        data-transform="updateExample"
@@ -3334,7 +3337,7 @@ the data type to be specified explicitly with each piece of data.</p>
     <button data-selects="turtle">Turtle</button>
     <a class="playground" target="_blank"></a>
   </div>
-  <pre class="original selected nohighlight" data-transform="updateExample">
+  <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
   <!--
   {
     "@context": {
@@ -3357,7 +3360,7 @@ the data type to be specified explicitly with each piece of data.</p>
   }
   -->
   </pre>
-  <pre class="expanded nohighlight"
+  <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
        data-transform="updateExample"
        data-result-for="Term definitions using compact and absolute IRIs-original">
   <!--
@@ -3372,7 +3375,7 @@ the data type to be specified explicitly with each piece of data.</p>
   ]
   -->
   </pre>
-  <table class="statements"
+  <table itemprop="example" class="statements"
          data-result-for="Term definitions using compact and absolute IRIs-expanded"
          data-to-rdf>
   <thead><tr><th>Subject</th><th>Property</th><th>Value</th><th>Value Type</th></tr></thead>
@@ -3383,7 +3386,7 @@ the data type to be specified explicitly with each piece of data.</p>
     <tr><td>_:b0</td><td>foaf:homepage</td><td>http://work.example.com/jsmith/</td><td></td></tr>
   </tbody>
   </table>
-  <pre class="turtle"
+  <pre itemscope itemtype="http://schema.org/Code" class="turtle"
        data-content-type="text/turtle"
        data-result-for="Term definitions using compact and absolute IRIs-expanded"
        data-transform="updateExample"
@@ -3438,7 +3441,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       ****"@context": {
@@ -3452,7 +3455,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Setting the default language of a JSON-LD document-original">
     <!--
@@ -3462,7 +3465,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Setting the default language of a JSON-LD document-expanded"
            data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th><th>Language</th></tr></thead>
@@ -3471,7 +3474,7 @@ the data type to be specified explicitly with each piece of data.</p>
         <tr><td>_:b0</td><td>http://example.org/occupation</td><td>科学者</td><td>ja</td></tr>
       </tbody>
     </table>
-    <pre class="turtle nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle nohighlight"
          data-content-type="text/turtle"
          data-result-for="Setting the default language of a JSON-LD document-expanded"
          data-transform="updateExample"
@@ -3495,7 +3498,7 @@ the data type to be specified explicitly with each piece of data.</p>
   <p>To clear the <a>default language</a> for a subtree, <code>@language</code> can
     be set to <code>null</code> in a <a>local context</a> as follows:</p>
 
-  <pre class="example nohighlight" data-transform="updateExample"
+  <pre itemscope itemtype="http://schema.org/Code" class="example nohighlight" data-transform="updateExample"
        title="Clearing default language">
   <!--
   {
@@ -3517,7 +3520,7 @@ the data type to be specified explicitly with each piece of data.</p>
   <p>Second, it is possible to associate a language with a specific <a>term</a>
     using an <a>expanded term definition</a>:</p>
 
-  <pre class="example nohighlight" data-transform="updateExample"
+  <pre itemscope itemtype="http://schema.org/Code" class="example nohighlight" data-transform="updateExample"
        title="Expanded term definition with language">
   <!--
   {
@@ -3557,7 +3560,7 @@ the data type to be specified explicitly with each piece of data.</p>
     the language-specific data. In this case, <a>language maps</a>
     may be utilized.</p>
 
-  <pre class="example nohighlight" data-transform="updateExample"
+  <pre itemscope itemtype="http://schema.org/Code" class="example nohighlight" data-transform="updateExample"
        title="Language map expressing a property in three languages">
   <!--
   {
@@ -3587,7 +3590,7 @@ the data type to be specified explicitly with each piece of data.</p>
   <p>Third, it is possible to override the <a>default language</a> by using a
     <a>value object</a>:</p>
 
-  <pre class="example nohighlight" data-transform="updateExample"
+  <pre itemscope itemtype="http://schema.org/Code" class="example nohighlight" data-transform="updateExample"
        title="Overriding default language using an expanded value">
   <!--
   {
@@ -3608,7 +3611,7 @@ the data type to be specified explicitly with each piece of data.</p>
     <code>@language</code> tag or setting it to <code>null</code> when expressing
     it using a <a>value object</a>:</p>
 
-  <pre class="example nohighlight" data-transform="updateExample"
+  <pre itemscope itemtype="http://schema.org/Code" class="example nohighlight" data-transform="updateExample"
        title="Removing language information using an expanded value">
   <!--
   {
@@ -3652,7 +3655,7 @@ the data type to be specified explicitly with each piece of data.</p>
     <button data-selects="turtle">Turtle</button>
     <a class="playground" target="_blank"></a>
   </div>
-  <pre class="original selected nohighlight" data-transform="updateExample">
+  <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
   <!--
   {
     "@context": {"foaf": "http://xmlns.com/foaf/0.1/"},
@@ -3663,7 +3666,7 @@ the data type to be specified explicitly with each piece of data.</p>
   }
   -->
   </pre>
-  <pre class="expanded nohighlight"
+  <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
        data-transform="updateExample"
        data-result-for="Multiple values with no inherent order-original">
   <!--
@@ -3677,7 +3680,7 @@ the data type to be specified explicitly with each piece of data.</p>
   }]
   -->
   </pre>
-  <table class="statements"
+  <table itemprop="example" class="statements"
          data-result-for="Multiple values with no inherent order-expanded"
          data-to-rdf>
   <thead><tr>
@@ -3703,7 +3706,7 @@ the data type to be specified explicitly with each piece of data.</p>
   </tr>
   </tbody>
   </table>
-  <pre class="turtle"
+  <pre itemscope itemtype="http://schema.org/Code" class="turtle"
        data-content-type="text/turtle"
        data-result-for="Multiple values with no inherent order-expanded"
        data-transform="updateExample"
@@ -3728,7 +3731,7 @@ the data type to be specified explicitly with each piece of data.</p>
     <button data-selects="turtle">Turtle</button>
     <a class="playground" target="_blank"></a>
   </div>
-  <pre class="original selected nohighlight" data-transform="updateExample">
+  <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
   <!--
   {
     "@context": {"dc": "http://purl.org/dc/terms/"},
@@ -3746,7 +3749,7 @@ the data type to be specified explicitly with each piece of data.</p>
   }
   -->
   </pre>
-  <pre class="expanded nohighlight"
+  <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
        data-transform="updateExample"
        data-result-for="Using an expanded form to set multiple values-original">
   <!--
@@ -3759,7 +3762,7 @@ the data type to be specified explicitly with each piece of data.</p>
   }]
   -->
   </pre>
-  <table class="statements"
+  <table itemprop="example" class="statements"
          data-result-for="Using an expanded form to set multiple values-expanded"
          data-to-rdf>
   <thead><tr>
@@ -3783,7 +3786,7 @@ the data type to be specified explicitly with each piece of data.</p>
   </tr>
   </tbody>
   </table>
-  <pre class="turtle nohighlight"
+  <pre itemscope itemtype="http://schema.org/Code" class="turtle nohighlight"
        data-content-type="text/turtle"
        data-result-for="Using an expanded form to set multiple values-expanded"
        data-transform="updateExample"
@@ -3813,7 +3816,7 @@ the data type to be specified explicitly with each piece of data.</p>
     <button data-selects="turtle">Turtle</button>
     <a class="playground" target="_blank"></a>
   </div>
-  <pre class="original selected nohighlight" data-transform="updateExample">
+  <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
   <!--
   {
     "@context": {"schema": "http://schema.org/"},
@@ -3828,7 +3831,7 @@ the data type to be specified explicitly with each piece of data.</p>
   }
   -->
   </pre>
-  <pre class="expanded nohighlight"
+  <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
        data-transform="updateExample"
        data-result-for="Multiple array values of different types-original">
   <!--
@@ -3844,7 +3847,7 @@ the data type to be specified explicitly with each piece of data.</p>
   }]
   -->
   </pre>
-  <table class="statements"
+  <table itemprop="example" class="statements"
          data-result-for="Multiple array values of different types-expanded"
          data-to-rdf>
   <thead><tr>
@@ -3892,7 +3895,7 @@ the data type to be specified explicitly with each piece of data.</p>
   </tr>
   </tbody>
   </table>
-  <pre class="turtle"
+  <pre itemscope itemtype="http://schema.org/Code" class="turtle"
        data-content-type="text/turtle"
        data-result-for="Multiple array values of different types-expanded"
        data-transform="updateExample"
@@ -3927,7 +3930,7 @@ the data type to be specified explicitly with each piece of data.</p>
     <button data-selects="turtle">Turtle</button>
     <a class="playground" target="_blank"></a>
   </div>
-  <pre class="original selected nohighlight" data-transform="updateExample">
+  <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
   <!--
   {
     "@context": {"foaf": "http://xmlns.com/foaf/0.1/"},
@@ -3940,7 +3943,7 @@ the data type to be specified explicitly with each piece of data.</p>
   }
   -->
   </pre>
-  <pre class="expanded nohighlight"
+  <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
        data-transform="updateExample"
        data-result-for="An ordered collection of values in JSON-LD-original">
   <!--
@@ -3956,7 +3959,7 @@ the data type to be specified explicitly with each piece of data.</p>
   }]
   -->
   </pre>
-  <table class="statements"
+  <table itemprop="example" class="statements"
          data-result-for="An ordered collection of values in JSON-LD-expanded"
          data-to-rdf>
   <thead><tr>
@@ -3974,7 +3977,7 @@ the data type to be specified explicitly with each piece of data.</p>
   <tr><td>_:b2</td><td>rdf:rest</td><td>rdf:nil</td></tr>
   </tbody>
   </table>
-  <pre class="turtle"
+  <pre itemscope itemtype="http://schema.org/Code" class="turtle"
        data-content-type="text/turtle"
        data-result-for="An ordered collection of values in JSON-LD-expanded"
        data-transform="updateExample"
@@ -4001,7 +4004,7 @@ the data type to be specified explicitly with each piece of data.</p>
     <button data-selects="turtle">Turtle</button>
     <a class="playground" target="_blank"></a>
   </div>
-  <pre class="original selected nohighlight" data-transform="updateExample">
+  <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
   <!--
   {
     ****"@context": {
@@ -4018,7 +4021,7 @@ the data type to be specified explicitly with each piece of data.</p>
   }
   -->
   </pre>
-  <pre class="expanded nohighlight"
+  <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
        data-transform="updateExample"
        data-result-for="Specifying that a collection is ordered in the context-original">
   <!--
@@ -4034,7 +4037,7 @@ the data type to be specified explicitly with each piece of data.</p>
   }]
   -->
   </pre>
-  <table class="statements"
+  <table itemprop="example" class="statements"
          data-result-for="Specifying that a collection is ordered in the context-expanded"
          data-to-rdf>
     <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -4048,7 +4051,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <tr><td>_:b2</td><td>rdf:rest</td><td>rdf:nil</td></tr>
     </tbody>
   </table>
-  <pre class="turtle"
+  <pre itemscope itemtype="http://schema.org/Code" class="turtle"
        data-content-type="text/turtle"
        data-result-for="Specifying that a collection is ordered in the context-expanded"
        data-transform="updateExample"
@@ -4076,7 +4079,7 @@ the data type to be specified explicitly with each piece of data.</p>
   <em>coordinates</em> are an ordered list of <em>positions</em>, which are
   represented as an array of two or more numbers:</p>
 
-<pre class="example changed nohighlight" data-transform="updateExample"
+<pre itemscope itemtype="http://schema.org/Code" class="example changed nohighlight" data-transform="updateExample"
      data-content-type="application/json"
      title="Coordinates expressed in GeoJSON">
 {
@@ -4112,7 +4115,7 @@ the data type to be specified explicitly with each piece of data.</p>
     <button data-selects="turtle">Turtle</button>
     <a class="playground" target="_blank"></a>
   </div>
-  <pre class="original selected changed"
+  <pre itemscope itemtype="http://schema.org/Code" class="original selected changed"
        data-content-type="application/json"
        data-transform="updateExample">
   {
@@ -4138,7 +4141,7 @@ the data type to be specified explicitly with each piece of data.</p>
     ####//...####
   }
   </pre>
-  <pre class="expanded nohighlight"
+  <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
        data-transform="updateExample"
        data-result-for="Coordinates expressed in JSON-LD-original">
   <!--
@@ -4168,7 +4171,7 @@ the data type to be specified explicitly with each piece of data.</p>
   }]
   -->
   </pre>
-  <table class="statements"
+  <table itemprop="example" class="statements"
          data-result-for="Coordinates expressed in JSON-LD-expanded"
          data-to-rdf>
   <thead><tr>
@@ -4219,7 +4222,7 @@ the data type to be specified explicitly with each piece of data.</p>
   <tr><td>_:b18</td><td>rdf:rest</td><td>rdf:nil</td><td></td></tr>
   </tbody>
   </table>
-  <pre class="turtle"
+  <pre itemscope itemtype="http://schema.org/Code" class="turtle"
        data-content-type="text/turtle"
        data-result-for="Coordinates expressed in JSON-LD-expanded"
        data-transform="updateExample"
@@ -4278,7 +4281,7 @@ the data type to be specified explicitly with each piece of data.</p>
     <button data-selects="turtle">Turtle</button>
     <a class="playground" target="_blank"></a>
   </div>
-  <pre class="original selected nohighlight" data-transform="updateExample">
+  <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
   <!--
   {
     "@context": {"foaf": "http://xmlns.com/foaf/0.1/"},
@@ -4291,7 +4294,7 @@ the data type to be specified explicitly with each piece of data.</p>
   }
   -->
   </pre>
-  <pre class="expanded nohighlight"
+  <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
        data-transform="updateExample"
        data-result-for="An unordered collection of values in JSON-LD-original">
   <!--
@@ -4305,7 +4308,7 @@ the data type to be specified explicitly with each piece of data.</p>
   }]
   -->
   </pre>
-  <table class="statements"
+  <table itemprop="example" class="statements"
          data-result-for="An unordered collection of values in JSON-LD-expanded"
          data-to-rdf>
   <thead><tr>
@@ -4331,7 +4334,7 @@ the data type to be specified explicitly with each piece of data.</p>
   </tr>
   </tbody>
   </table>
-  <pre class="turtle"
+  <pre itemscope itemtype="http://schema.org/Code" class="turtle"
        data-content-type="text/turtle"
        data-result-for="An unordered collection of values in JSON-LD-expanded"
        data-transform="updateExample"
@@ -4358,7 +4361,7 @@ the data type to be specified explicitly with each piece of data.</p>
     <button data-selects="turtle">Turtle</button>
     <a class="playground" target="_blank"></a>
   </div>
-  <pre class="original selected nohighlight" data-transform="updateExample">
+  <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
   <!--
   {
     ****"@context": {
@@ -4375,7 +4378,7 @@ the data type to be specified explicitly with each piece of data.</p>
   }
   -->
   </pre>
-  <pre class="expanded nohighlight"
+  <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
        data-transform="updateExample"
        data-result-for="Specifying that a collection is unordered in the context-original">
   <!--
@@ -4389,7 +4392,7 @@ the data type to be specified explicitly with each piece of data.</p>
   }]
   -->
   </pre>
-  <table class="statements"
+  <table itemprop="example" class="statements"
          data-result-for="Specifying that a collection is unordered in the context-expanded"
          data-to-rdf>
   <thead><tr>
@@ -4415,7 +4418,7 @@ the data type to be specified explicitly with each piece of data.</p>
   </tr>
   </tbody>
   </table>
-  <pre class="turtle"
+  <pre itemscope itemtype="http://schema.org/Code" class="turtle"
        data-content-type="text/turtle"
        data-result-for="Specifying that a collection is unordered in the context-expanded"
        data-transform="updateExample"
@@ -4453,7 +4456,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -4473,7 +4476,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Nested properties-original">
     <!--
@@ -4491,7 +4494,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Nested properties-expanded"
            data-to-rdf>
     <thead><tr>
@@ -4517,7 +4520,7 @@ the data type to be specified explicitly with each piece of data.</p>
     </tr>
     </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Nested properties-expanded"
          data-transform="updateExample"
@@ -4551,7 +4554,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -4567,7 +4570,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Nested properties folded into containing object-original">
     <!--
@@ -4585,7 +4588,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Nested properties folded into containing object-expanded"
            data-to-rdf>
     <thead><tr>
@@ -4611,7 +4614,7 @@ the data type to be specified explicitly with each piece of data.</p>
     </tr>
     </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Nested properties folded into containing object-expanded"
          data-transform="updateExample"
@@ -4641,7 +4644,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
    {
      "@context": {
@@ -4661,7 +4664,7 @@ the data type to be specified explicitly with each piece of data.</p>
    }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Defining property nesting-original">
     <!--
@@ -4679,7 +4682,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Defining property nesting-expanded"
            data-to-rdf>
     <thead><tr>
@@ -4705,7 +4708,7 @@ the data type to be specified explicitly with each piece of data.</p>
     </tr>
     </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Defining property nesting-expanded"
          data-transform="updateExample"
@@ -4745,7 +4748,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -4764,7 +4767,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Referencing node objects-original">
     <!--
@@ -4785,7 +4788,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Referencing node objects-expanded"
            data-to-rdf>
     <thead><tr>
@@ -4821,7 +4824,7 @@ the data type to be specified explicitly with each piece of data.</p>
     </tr>
     </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Referencing node objects-expanded"
          data-transform="updateExample"
@@ -4855,7 +4858,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -4871,7 +4874,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Embedding a node object as property value of another node object-original">
     <!--
@@ -4890,7 +4893,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Embedding a node object as property value of another node object-expanded"
            data-to-rdf>
     <thead><tr>
@@ -4926,7 +4929,7 @@ the data type to be specified explicitly with each piece of data.</p>
     </tr>
     </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Embedding a node object as property value of another node object-expanded"
          data-transform="updateExample"
@@ -4971,7 +4974,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -4989,7 +4992,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Referencing an unidentified node-original">
     <!--
@@ -5012,7 +5015,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Referencing an unidentified node-expanded"
            data-to-rdf>
     <thead><tr>
@@ -5053,7 +5056,7 @@ the data type to be specified explicitly with each piece of data.</p>
     </tr>
     </tbody>
     </table>
-    <pre class="turtle nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle nohighlight"
          data-content-type="text/turtle"
          data-result-for="Referencing an unidentified node-expanded"
          data-transform="updateExample"
@@ -5097,7 +5100,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {"@vocab": "http://schema.org/"},
@@ -5111,7 +5114,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Specifying a local blank node identifier-original">
     <!--
@@ -5125,7 +5128,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Specifying a local blank node identifier-expanded"
            data-to-rdf>
     <thead><tr>
@@ -5156,7 +5159,7 @@ the data type to be specified explicitly with each piece of data.</p>
     </tr>
     </tbody>
     </table>
-    <pre class="turtle nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle nohighlight"
          data-content-type="text/turtle"
          data-result-for="Specifying a local blank node identifier-expanded"
          data-transform="updateExample"
@@ -5235,7 +5238,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -5266,7 +5269,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Indexing data in JSON-LD-original">
     <!--
@@ -5294,7 +5297,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
          data-result-for="Indexing data in JSON-LD-expanded"
          data-to-rdf>
     <thead><tr>
@@ -5354,7 +5357,7 @@ the data type to be specified explicitly with each piece of data.</p>
     </tr>
     </tbody>
     </table>
-    <pre class="turtle nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle nohighlight"
          data-content-type="text/turtle"
          data-result-for="Indexing data in JSON-LD-expanded"
          data-transform="updateExample"
@@ -5413,7 +5416,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -5450,7 +5453,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Indexing data using @none-original">
     <!--
@@ -5488,7 +5491,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
          data-result-for="Indexing data using @none-expanded"
          data-to-rdf>
     <thead><tr>
@@ -5566,7 +5569,7 @@ the data type to be specified explicitly with each piece of data.</p>
     </tr>
     </tbody>
     </table>
-    <pre class="turtle nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle nohighlight"
          data-content-type="text/turtle"
          data-result-for="Indexing data using @none-expanded"
          data-transform="updateExample"
@@ -5618,7 +5621,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -5636,7 +5639,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Indexing languaged-tagged strings in JSON-LD-original">
     <!--
@@ -5650,7 +5653,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
          data-result-for="Indexing languaged-tagged strings in JSON-LD-expanded"
          data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th><th>Language</th></tr></thead>
@@ -5660,7 +5663,7 @@ the data type to be specified explicitly with each piece of data.</p>
         <tr><td>http://example.com/queen</td><td>http://example.com/vocab/label</td><td>Ihre Majestät</td><td>de</td></tr>
       </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Indexing languaged-tagged strings in JSON-LD-expanded"
          data-transform="updateExample"
@@ -5697,7 +5700,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -5716,7 +5719,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Indexing languaged-tagged strings in JSON-LD with @set representation-original">
     <!--
@@ -5730,7 +5733,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
          data-result-for="Indexing languaged-tagged strings in JSON-LD with @set representation-expanded"
          data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th><th>Language</th></tr></thead>
@@ -5740,7 +5743,7 @@ the data type to be specified explicitly with each piece of data.</p>
         <tr><td>http://example.com/queen</td><td>http://example.com/vocab/label</td><td>Ihre Majestät</td><td>de</td></tr>
       </tbody>
     </table>
-    <pre class="turtle nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle nohighlight"
          data-content-type="text/turtle"
          data-result-for="Indexing languaged-tagged strings in JSON-LD with @set representation-expanded"
          data-transform="updateExample"
@@ -5770,7 +5773,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -5789,7 +5792,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Indexing languaged-tagged strings using @none for no language-original">
     <!--
@@ -5804,7 +5807,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
          data-result-for="Indexing languaged-tagged strings using @none for no language-expanded"
          data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th><th>Language</th></tr></thead>
@@ -5815,7 +5818,7 @@ the data type to be specified explicitly with each piece of data.</p>
         <tr><td>http://example.com/queen</td><td>http://example.com/vocab/label</td><td>The Queen</td><td></td></tr>
       </tbody>
     </table>
-    <pre class="turtle nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle nohighlight"
          data-content-type="text/turtle"
          data-result-for="Indexing languaged-tagged strings using @none for no language-expanded"
          data-transform="updateExample"
@@ -5852,7 +5855,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -5882,7 +5885,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Indexing data in JSON-LD by node identifiers-original">
     <!--
@@ -5906,7 +5909,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
          data-result-for="Indexing data in JSON-LD by node identifiers-expanded"
          data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th><th>Value Type</th></tr></thead>
@@ -5921,7 +5924,7 @@ the data type to be specified explicitly with each piece of data.</p>
         <tr><td>http://example.com/posts/1/en</td><td>schema:wordCount</td><td>1539</td><td>xsd:integer</td></tr>
       </tbody>
     </table>
-    <pre class="turtle nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle nohighlight"
          data-content-type="text/turtle"
          data-result-for="Indexing data in JSON-LD by node identifiers-expanded"
          data-transform="updateExample"
@@ -5970,7 +5973,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -6000,7 +6003,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Indexing data in JSON-LD by node identifiers with @set representation-original">
     <!--
@@ -6024,7 +6027,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
          data-result-for="Indexing data in JSON-LD by node identifiers with @set representation-expanded"
          data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th><th>Value Type</th></tr></thead>
@@ -6039,7 +6042,7 @@ the data type to be specified explicitly with each piece of data.</p>
         <tr><td>http://example.com/posts/1/en</td><td>schema:wordCount</td><td>1539</td><td>xsd:integer</td></tr>
       </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Indexing data in JSON-LD by node identifiers with @set representation-expanded"
          data-transform="updateExample"
@@ -6080,7 +6083,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -6115,7 +6118,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Indexing data in JSON-LD by node identifiers using @none-original">
     <!--
@@ -6144,7 +6147,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
          data-result-for="Indexing data in JSON-LD by node identifiers using @none-expanded"
          data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th><th>Value Type</th></tr></thead>
@@ -6162,7 +6165,7 @@ the data type to be specified explicitly with each piece of data.</p>
         <tr><td>_:b0</td><td>schema:wordCount</td><td>20</td><td>xsd:integer</td></tr>
       </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Indexing data in JSON-LD by node identifiers using @none-expanded"
          data-transform="updateExample"
@@ -6214,7 +6217,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -6240,7 +6243,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Indexing data in JSON-LD by type-original">
     <!--
@@ -6260,7 +6263,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
          data-result-for="Indexing data in JSON-LD by type-expanded"
          data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -6274,7 +6277,7 @@ the data type to be specified explicitly with each piece of data.</p>
         <tr><td>_:b0</td><td>schema:affiliation</td><td>https://spec-ops.io</td></tr>
       </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Indexing data in JSON-LD by type-expanded"
          data-transform="updateExample"
@@ -6317,7 +6320,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -6343,7 +6346,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Indexing data in JSON-LD by type with @set representation-original">
     <!--
@@ -6363,7 +6366,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
          data-result-for="Indexing data in JSON-LD by type with @set representation-expanded"
          data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -6377,7 +6380,7 @@ the data type to be specified explicitly with each piece of data.</p>
         <tr><td>_:b0</td><td>schema:affiliation</td><td>https://spec-ops.io</td></tr>
       </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Indexing data in JSON-LD by type with @set representation-expanded"
          data-transform="updateExample"
@@ -6416,7 +6419,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -6447,7 +6450,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Indexing data in JSON-LD by type using @none-original">
     <!--
@@ -6472,7 +6475,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
          data-result-for="Indexing data in JSON-LD by type using @none-expanded"
          data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -6488,7 +6491,7 @@ the data type to be specified explicitly with each piece of data.</p>
         <tr><td>_:b0</td><td>schema:affiliation</td><td>http://greggkellogg.net/</td></tr>
       </tbody>
     </table>
-    <pre class="turtle nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle nohighlight"
          data-content-type="text/turtle"
          data-result-for="Indexing data in JSON-LD by type using @none-expanded"
          data-transform="updateExample"
@@ -6546,7 +6549,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight"
          data-transform="updateExample"
          data-base="http://example.org/">
     <!--
@@ -6566,7 +6569,7 @@ the data type to be specified explicitly with each piece of data.</p>
     ]
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-base="http://example.org/"
          data-result-for="A document with children linking to their parent-original">
@@ -6586,7 +6589,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
          data-result-for="A document with children linking to their parent-expanded"
          data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -6598,7 +6601,7 @@ the data type to be specified explicitly with each piece of data.</p>
         <tr><td>http://example.org/#lisa</td><td>http://example.com/vocab#parent</td><td>http://example.org/#homer</td></tr>
       </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="A document with children linking to their parent-expanded"
          data-transform="updateExample"
@@ -6630,7 +6633,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight"
          data-base="http://example.org/"
          data-transform="updateExample">
     <!--
@@ -6651,7 +6654,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-base="http://example.org/"
          data-result-for="A person and its children using a reverse property-original">
@@ -6671,7 +6674,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <pre class="flattened nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="flattened nohighlight"
          data-transform="updateExample"
          data-base="http://example.org/"
          data-flatten
@@ -6692,7 +6695,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
          data-result-for="A person and its children using a reverse property-expanded"
          data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -6704,7 +6707,7 @@ the data type to be specified explicitly with each piece of data.</p>
         <tr><td>http://example.org/#lisa</td><td>http://example.com/vocab#parent</td><td>http://example.org/#homer</td></tr>
       </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="A person and its children using a reverse property-expanded"
          data-transform="updateExample"
@@ -6738,7 +6741,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="turtle">Turtle</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample"
          data-base="http://example.org/">
     <!--
     {
@@ -6759,7 +6762,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-base="http://example.org/"
          data-result-for="Using @reverse to define reverse properties-original">
@@ -6779,7 +6782,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <pre class="flattened nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="flattened nohighlight"
          data-transform="updateExample"
          data-base="http://example.org/"
          data-flatten
@@ -6800,7 +6803,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
          data-result-for="Using @reverse to define reverse properties-expanded"
          data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -6812,7 +6815,7 @@ the data type to be specified explicitly with each piece of data.</p>
         <tr><td>http://example.org/#lisa</td><td>http://example.com/vocab#parent</td><td>http://example.org/#homer</td></tr>
       </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Using @reverse to define reverse properties-expanded"
          data-transform="updateExample"
@@ -6850,7 +6853,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="trig">TriG</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -6880,7 +6883,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Identifying and making statements about a graph-original">
     <!--
@@ -6908,7 +6911,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Identifying and making statements about a graph-expanded"
            data-to-rdf>
       <thead><tr><th>Graph</th><th>Subject</th><th>Property</th><th>Value</th><th>Value Type</th></tr></thead>
@@ -6922,7 +6925,7 @@ the data type to be specified explicitly with each piece of data.</p>
         <tr><td>http://example.org/foaf-graph</td><td>http://greggkellogg.net/foaf#me</td><td>foaf:knows</td><td>http://manu.sporny.org/about#manu</td><td>&nbsp;</td></tr>
       </tbody>
     </table>
-    <pre class="trig nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="trig nohighlight"
          data-content-type="application/trig"
          data-result-for="Identifying and making statements about a graph-expanded"
          data-transform="updateExample"
@@ -6976,7 +6979,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="trig">TriG</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -6999,7 +7002,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Using @graph to explicitly express the default graph-original">
     <!--
@@ -7021,7 +7024,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Using @graph to explicitly express the default graph-expanded"
            data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -7034,7 +7037,7 @@ the data type to be specified explicitly with each piece of data.</p>
         <tr><td>http://greggkellogg.net/foaf#me</td><td>schema:knows</td><td>http://manu.sporny.org/about#manu</td></tr>
       </tbody>
     </table>
-    <pre class="trig nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="trig nohighlight"
          data-content-type="application/trig"
          data-result-for="Using @graph to explicitly express the default graph-expanded"
          data-transform="updateExample"
@@ -7067,7 +7070,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="trig">TriG</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     [
       {
@@ -7093,7 +7096,7 @@ the data type to be specified explicitly with each piece of data.</p>
     ]
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Context needs to be duplicated if @graph is not used-original">
     <!--
@@ -7115,7 +7118,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Context needs to be duplicated if @graph is not used-expanded"
            data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -7128,7 +7131,7 @@ the data type to be specified explicitly with each piece of data.</p>
         <tr><td>http://greggkellogg.net/foaf#me</td><td>schema:knows</td><td>http://manu.sporny.org/about#manu</td></tr>
       </tbody>
     </table>
-    <pre class="trig nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="trig nohighlight"
          data-content-type="application/trig"
          data-result-for="Context needs to be duplicated if @graph is not used-expanded"
          data-transform="updateExample"
@@ -7175,7 +7178,7 @@ the data type to be specified explicitly with each piece of data.</p>
         <button data-selects="trig">TriG</button>
         <a class="playground" target="_blank"></a>
       </div>
-      <pre class="original selected nohighlight" data-transform="updateExample">
+      <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
       <!--
       {
         "@context": {
@@ -7210,7 +7213,7 @@ the data type to be specified explicitly with each piece of data.</p>
       }
       -->
       </pre>
-      <pre class="expanded nohighlight" data-transform="updateExample"
+      <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight" data-transform="updateExample"
            data-result-for="Implicitly named graph-original">
       <!--
       [{
@@ -7241,7 +7244,7 @@ the data type to be specified explicitly with each piece of data.</p>
       }]
       -->
       </pre>
-      <table class="statements"
+      <table itemprop="example" class="statements"
              data-result-for="Implicitly named graph-expanded"
              data-to-rdf>
         <thead><tr><th>Graph</th><th>Subject</th><th>Property</th><th>Value</th><th>Value Type</th></tr></thead>
@@ -7257,7 +7260,7 @@ the data type to be specified explicitly with each piece of data.</p>
           <tr><td>_:b1</td><td>http://greggkellogg.net/foaf#me</td><td>foaf:knows</td><td>http://manu.sporny.org/about#manu</td><td>&nbsp;</td></tr>
         </tbody>
       </table>
-      <pre class="trig nohighlight"
+      <pre itemscope itemtype="http://schema.org/Code" class="trig nohighlight"
            data-content-type="application/trig"
            data-result-for="Implicitly named graph-expanded"
            data-transform="updateExample"
@@ -7329,7 +7332,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="trig">TriG</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -7361,7 +7364,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded nohighlight" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight" data-transform="updateExample"
          data-result-for="Indexing graph data in JSON-LD-original">
     <!--
     [{
@@ -7390,7 +7393,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Indexing graph data in JSON-LD-expanded"
            data-to-rdf>
       <thead><tr><th>Graph</th><th>Subject</th><th>Property</th><th>Value</th><th>Value Type</th></tr></thead>
@@ -7405,7 +7408,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <tr><td>_:b2</td><td>http://example.com/posts/1/en</td><td>schema:wordCount</td><td>1539</td><td>xsd:integer</td></tr>
       </tbody>
     </table>
-    <pre class="trig nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="trig nohighlight"
          data-content-type="application/trig"
          data-result-for="Indexing graph data in JSON-LD-expanded"
          data-transform="updateExample"
@@ -7457,7 +7460,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="trig">TriG</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -7489,7 +7492,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded nohighlight" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight" data-transform="updateExample"
          data-result-for="Indexing graphs using @none for no index-original">
     <!--
     [{
@@ -7517,7 +7520,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Indexing graphs using @none for no index-expanded"
            data-to-rdf>
       <thead><tr><th>Graph</th><th>Subject</th><th>Property</th><th>Value</th><th>Value Type</th></tr></thead>
@@ -7532,7 +7535,7 @@ the data type to be specified explicitly with each piece of data.</p>
         <tr><td>_:b1</td><td>http://example.com/posts/1/no-language</td><td>schema:wordCount</td><td>1204</td><td>xsd:integer</td></tr>
       </tbody>
     </table>
-    <pre class="trig nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="trig nohighlight"
          data-content-type="application/trig"
          data-result-for="Indexing graphs using @none for no index-expanded"
          data-transform="updateExample"
@@ -7585,7 +7588,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="trig">TriG</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -7624,7 +7627,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Referencing named graphs using an id map-original">
     <!--
@@ -7662,7 +7665,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Referencing named graphs using an id map-expanded"
            data-to-rdf>
       <thead><tr><th>Graph</th><th>Subject</th><th>Property</th><th>Value</th><th>Value Type</th></tr></thead>
@@ -7678,7 +7681,7 @@ the data type to be specified explicitly with each piece of data.</p>
         <tr><td>http://manu.sporny.org/about#manu</td><td>http://manu.sporny.org/about#manu</td><td>foaf:knows</td><td>http://greggkellogg.net/foaf#me</td><td>&nbsp;</td></tr>
       </tbody>
     </table>
-    <pre class="trig nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="trig nohighlight"
          data-content-type="application/trig"
          data-result-for="Referencing named graphs using an id map-expanded"
          data-transform="updateExample"
@@ -7731,7 +7734,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="trig">TriG</button>
       <a class="playground" target="_blank"></a>
     </div>
-    <pre class="original selected nohighlight" data-transform="updateExample">
+    <pre itemscope itemtype="http://schema.org/Code" class="original selected nohighlight" data-transform="updateExample">
     <!--
     {
       "@context": {
@@ -7766,7 +7769,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded nohighlight"
          data-transform="updateExample"
          data-result-for="Referencing named graphs using an id map with @none-original">
     <!--
@@ -7799,7 +7802,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Referencing named graphs using an id map with @none-expanded"
            data-to-rdf>
       <thead><tr><th>Graph</th><th>Subject</th><th>Property</th><th>Value</th><th>Value Type</th></tr></thead>
@@ -7815,7 +7818,7 @@ the data type to be specified explicitly with each piece of data.</p>
         <tr><td>_:b1</td><td>http://greggkellogg.net/foaf#me</td><td>foaf:knows</td><td>http://manu.sporny.org/about#manu</td><td>&nbsp;</td></tr>
       </tbody>
     </table>
-    <pre class="trig nohighlight"
+    <pre itemscope itemtype="http://schema.org/Code" class="trig nohighlight"
          data-content-type="application/trig"
          data-result-for="Referencing named graphs using an id map with @none-expanded"
          data-transform="updateExample"
@@ -7887,7 +7890,7 @@ the data type to be specified explicitly with each piece of data.</p>
 
   <p>For example, assume the following JSON-LD input document:</p>
 
-  <pre id="sample-json-ld-document-to-be-expanded"
+  <pre itemscope itemtype="http://schema.org/Code" id="sample-json-ld-document-to-be-expanded"
        class="example" data-transform="updateExample"
        title="Sample JSON-LD document to be expanded">
   <!--
@@ -7917,7 +7920,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <a class="playground" target="_blank"
          data-result-for="#sample-json-ld-document-to-be-expanded"></a>
     </div>
-    <pre class="expanded selected" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded selected" data-transform="updateExample"
          data-result-for="Sample JSON-LD document to be expanded">
     <!--
     [
@@ -7932,7 +7935,7 @@ the data type to be specified explicitly with each piece of data.</p>
     ]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Expanded form for the previous example-expanded"
            data-to-rdf>
       <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
@@ -7941,7 +7944,7 @@ the data type to be specified explicitly with each piece of data.</p>
         <tr><td>_:b0</td><td>foaf:homepage</td><td>http://manu.sporny.org/</td></tr>
       </tbody>
     </table>
-    <pre class="turtle"
+    <pre itemscope itemtype="http://schema.org/Code" class="turtle"
          data-content-type="text/turtle"
          data-result-for="Expanded form for the previous example-expanded"
          data-transform="updateExample"
@@ -7977,7 +7980,7 @@ the data type to be specified explicitly with each piece of data.</p>
 
   <p>For example, assume the following JSON-LD input document:</p>
 
-  <pre id="sample-expanded-json-ld-document"
+  <pre itemscope itemtype="http://schema.org/Code" id="sample-expanded-json-ld-document"
        class="example" data-transform="updateExample"
        title="Sample expanded JSON-LD document">
   <!--
@@ -7996,7 +7999,7 @@ the data type to be specified explicitly with each piece of data.</p>
 
   <p>Additionally, assume the following developer-supplied JSON-LD context:</p>
 
-  <pre id="sample-context"
+  <pre itemscope itemtype="http://schema.org/Code" id="sample-context"
        class="example" data-transform="updateExample"
        title="Sample context"
        data-context-for="Sample expanded JSON-LD document">
@@ -8025,7 +8028,7 @@ the data type to be specified explicitly with each piece of data.</p>
          data-context="#sample-context"
          data-compact></a>
     </div>
-    <pre class="selected original" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="selected original" data-transform="updateExample"
          data-result-for="Sample expanded JSON-LD document"
          data-compact
          data-context="Sample context">
@@ -8064,7 +8067,7 @@ the data type to be specified explicitly with each piece of data.</p>
 
   <p>For example, assume the following JSON-LD input document:</p>
 
-  <pre id="sample-expanded-json-ld-document-to-be-flattened"
+  <pre itemscope itemtype="http://schema.org/Code" id="sample-expanded-json-ld-document-to-be-flattened"
        class="example" data-transform="updateExample"
        title="Sample JSON-LD document to be flattened">
   <!--
@@ -8099,7 +8102,7 @@ the data type to be specified explicitly with each piece of data.</p>
          data-context="#sample-expanded-json-ld-document-to-be-flattened"
          data-flatten></a>
     </div>
-    <pre class="selected original" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="selected original" data-transform="updateExample"
          data-flatten
          data-context="Sample JSON-LD document to be flattened"
          data-result-for="Sample JSON-LD document to be flattened">
@@ -8148,7 +8151,7 @@ the data type to be specified explicitly with each piece of data.</p>
 
   <p>For example, assume the following JSON-LD frame:</p>
 
-  <pre id="sample-library-frame"
+  <pre itemscope itemtype="http://schema.org/Code" id="sample-library-frame"
        class="example" data-transform="updateExample"
        title="Sample library frame">
   <!--
@@ -8177,7 +8180,7 @@ the data type to be specified explicitly with each piece of data.</p>
 
   <p>When using a flattened set of objects that match the frame components:</p>
 
-  <pre id="sample-flattened-library-objects"
+  <pre itemscope itemtype="http://schema.org/Code" id="sample-flattened-library-objects"
        class="example" data-transform="updateExample"
        title="Flattened library objects">
   <!--
@@ -8217,7 +8220,7 @@ the data type to be specified explicitly with each piece of data.</p>
          data-frame="#sample-library-frame"
          data-flatten></a>
     </div>
-    <pre class="selected original nohighlight" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="selected original nohighlight" data-transform="updateExample"
          title="Framed library objects"
          data-frame="Sample library frame"
          data-result-for="Flattened library objects">
@@ -8292,7 +8295,7 @@ the data type to be specified explicitly with each piece of data.</p>
   <p>The following example demonstrates the use of an external context with an
     ordinary JSON document over HTTP:</p>
 
-  <pre class="example nohighlight" data-transform="updateExample"
+  <pre itemscope itemtype="http://schema.org/Code" class="example nohighlight" data-transform="updateExample"
        data-content-type="http"
        data-ignore
        title="Referencing a JSON-LD context from a JSON document via an HTTP Link Header">
@@ -8331,7 +8334,7 @@ the data type to be specified explicitly with each piece of data.</p>
     it in a script element with the <code>type</code> attribute set to
     <code>application/ld+json</code>.</p>
 
-  <pre class="example nohighlight" data-transform="updateExample"
+  <pre itemscope itemtype="http://schema.org/Code" class="example nohighlight" data-transform="updateExample"
        data-content-type="text/html"
        data-ignore
        title="Embedding JSON-LD in HTML">
@@ -8399,7 +8402,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <a>blank node</a>.</li>
     <li>A <a>graph</a> MUST NOT contain unconnected <a>nodes</a>,
       i.e., nodes which are not connected by an <a>edge</a> to any other <a>node</a>.
-      <pre class="illegal-example"
+      <pre itemscope itemtype="http://schema.org/Code" class="illegal-example"
           data-transform="updateExample"
           data-ignore
           title="Illegal Unconnected Node">
@@ -8489,7 +8492,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <button data-selects="statements">Statements</button>
       <button data-selects="trig">TriG</button>
     </div>
-    <pre class="compacted selected"
+    <pre itemscope itemtype="http://schema.org/Code" class="compacted selected"
          data-transform="updateExample">
     <!--
     {
@@ -8527,7 +8530,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }
     -->
     </pre>
-    <pre class="expanded" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="expanded" data-transform="updateExample"
          data-result-for="Linked Data Dataset-compacted">
     <!--
     [{
@@ -8563,7 +8566,7 @@ the data type to be specified explicitly with each piece of data.</p>
     }]
     -->
     </pre>
-    <table class="statements"
+    <table itemprop="example" class="statements"
            data-result-for="Linked Data Dataset-expanded"
            data-to-rdf>
       <thead><tr><th>Graph</th><th>Subject</th><th>Property</th><th>Value</th><th>Language</th></tr></thead>
@@ -8579,7 +8582,7 @@ the data type to be specified explicitly with each piece of data.</p>
         <tr><td>http://example.com/graphs/2</td><td>_:b0</td><td>schema:sibling</td><td>http://example.com/people/bob</td><td></td></tr>
       </tbody>
     </table>
-    <pre class="trig"
+    <pre itemscope itemtype="http://schema.org/Code" class="trig"
          data-content-type="application/trig"
          data-result-for="Linked Data Dataset-expanded"
          data-transform="updateExample"
@@ -9250,7 +9253,7 @@ the data type to be specified explicitly with each piece of data.</p>
 
     <p>For example, consider the following JSON-LD document in compact form:</p>
 
-    <pre class="example" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="example" data-transform="updateExample"
          title="Sample JSON-LD document">
     <!--
     {
@@ -9276,7 +9279,7 @@ the data type to be specified explicitly with each piece of data.</p>
       JSON-LD input document in the example above would result in the
       following output:</p>
 
-    <pre class="example" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="example" data-transform="updateExample"
          title="Flattened and expanded form for the previous example">
     <!--
     [
@@ -9302,7 +9305,7 @@ the data type to be specified explicitly with each piece of data.</p>
       each <a>node object</a> into one or more RDF triples. This can be
       expressed in Turtle as follows:</p>
 
-    <pre class="example" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="example" data-transform="updateExample"
          data-content-type="text/turtle"
          data-result-for="Flattened and expanded form for the previous example"
          data-to-rdf
@@ -9385,7 +9388,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <p>The JSON-LD context has direct equivalents for the Turtle
         <code>@prefix</code> declaration:</p>
 
-      <pre class="example" data-transform="updateExample"
+      <pre itemscope itemtype="http://schema.org/Code" class="example" data-transform="updateExample"
            data-content-type="text/turtle"
            data-result-for="The same set of statements serialized in JSON-LD"
            data-to-rdf
@@ -9399,7 +9402,7 @@ the data type to be specified explicitly with each piece of data.</p>
       -->
       </pre>
 
-      <pre class="example" data-transform="updateExample"
+      <pre itemscope itemtype="http://schema.org/Code" class="example" data-transform="updateExample"
            title="The same set of statements serialized in JSON-LD">
       <!--
       {
@@ -9421,7 +9424,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <p>Both [[Turtle]] and JSON-LD allow embedding, although [[Turtle]] only allows embedding of
         <a>blank nodes</a>.</p>
 
-      <pre class="example" data-transform="updateExample"
+      <pre itemscope itemtype="http://schema.org/Code" class="example" data-transform="updateExample"
            data-content-type="text/turtle"
            data-to-rdf
            data-result-for="Same embedding example in JSON-LD"
@@ -9436,7 +9439,7 @@ the data type to be specified explicitly with each piece of data.</p>
       -->
       </pre>
 
-      <pre class="example" data-transform="updateExample"
+      <pre itemscope itemtype="http://schema.org/Code" class="example" data-transform="updateExample"
            title="Same embedding example in JSON-LD">
       <!--
       {
@@ -9469,7 +9472,7 @@ the data type to be specified explicitly with each piece of data.</p>
         <a>true</a> and <a>false</a> to a <code>xsd:boolean</code>-typed
         literal. All typed literals are in canonical lexical form.</p>
 
-      <pre class="example" data-transform="updateExample"
+      <pre itemscope itemtype="http://schema.org/Code" class="example" data-transform="updateExample"
            title="JSON-LD using native data types for numbers and boolean values">
       <!--
       {
@@ -9483,7 +9486,7 @@ the data type to be specified explicitly with each piece of data.</p>
       -->
       </pre>
 
-      <pre class="example" data-transform="updateExample"
+      <pre itemscope itemtype="http://schema.org/Code" class="example" data-transform="updateExample"
            data-content-type="text/turtle"
            data-result-for="JSON-LD using native data types for numbers and boolean values"
            data-to-rdf
@@ -9504,7 +9507,7 @@ the data type to be specified explicitly with each piece of data.</p>
       <h4>Lists</h4>
       <p>Both JSON-LD and [[Turtle]] can represent sequential lists of values.</p>
 
-      <pre class="example" data-transform="updateExample"
+      <pre itemscope itemtype="http://schema.org/Code" class="example" data-transform="updateExample"
            data-content-type="text/turtle"
            data-to-rdf
            data-result-for="Same example with a list of values in JSON-LD"
@@ -9518,7 +9521,7 @@ the data type to be specified explicitly with each piece of data.</p>
       -->
       </pre>
 
-      <pre class="example" data-transform="updateExample"
+      <pre itemscope itemtype="http://schema.org/Code" class="example" data-transform="updateExample"
            title="Same example with a list of values in JSON-LD">
       <!--
       {
@@ -9537,13 +9540,13 @@ the data type to be specified explicitly with each piece of data.</p>
     </section>
   </section>
 
-  <section class="informative">
+  <section itemprop="example" itemscope itemtype="http://www.w3.org/2004/02/skos/core#" class="informative">
     <h3>RDFa</h3>
 
     <p>The following example describes three people with their respective names and
       homepages in RDFa [[RDFA-CORE]].</p>
 
-    <pre class="example nohighlight" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="example nohighlight" data-transform="updateExample"
          data-content-type="text/html"
          data-to-rdf
          data-result-for="Same description in JSON-LD (context shared among node objects)"
@@ -9574,7 +9577,7 @@ the data type to be specified explicitly with each piece of data.</p>
     <p>An example JSON-LD implementation using a single <a>context</a> is
       described below.</p>
 
-    <pre class="example" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="example" data-transform="updateExample"
          title="Same description in JSON-LD (context shared among node objects)">
     <!--
     {
@@ -9608,7 +9611,7 @@ the data type to be specified explicitly with each piece of data.</p>
     <p>The HTML Microdata [[MICRODATA]] example below expresses book information as
       a Microdata Work item.</p>
 
-    <pre class="example" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="example" data-transform="updateExample"
          data-content-type="text/html"
          data-result-for="Same book description in JSON-LD (avoiding contexts)"
          data-to-rdf
@@ -9640,11 +9643,11 @@ the data type to be specified explicitly with each piece of data.</p>
     -->
     </pre>
 
-    <p>Note that the JSON-LD representation of the Microdata information stays
+    <p itemprop="note" itemscope itemtype="http://www.w3.org/2004/02/skos/core#">Note that the JSON-LD representation of the Microdata information stays
       true to the desires of the Microdata community to avoid contexts and
       instead refer to items by their full <a>IRI</a>.</p>
 
-    <pre class="example" data-transform="updateExample"
+    <pre itemscope itemtype="http://schema.org/Code" class="example" data-transform="updateExample"
          title="Same book description in JSON-LD (avoiding contexts)">
     <!--
     [
@@ -9832,9 +9835,9 @@ the data type to be specified explicitly with each piece of data.</p>
   </p>
 </section>
 
-<section class="appendix informative" id="changes-from-10">
+<section  itemscope itemtype="http://www.w3.org/2004/02/skos/core#" class="appendix informative" id="changes-from-10">
   <h2>Changes since 1.0 Recommendation of 16 January 2014</h2>
-  <ul>
+  <ul itemprop="changeNote">
     <li>A context may contain a <code>@version</code> <a>member</a> which is used to set the <a>processing mode</a>.</li>
     <li>An <a>expanded term definition</a> can now have an
       <code>@context</code> property, which defines a <a>context</a> used for values of
@@ -9882,9 +9885,9 @@ the data type to be specified explicitly with each piece of data.</p>
   <p>Additionally, see <a href="#changes-from-cg" class="sectionRef"></a>.</p>
 </section>
 
-<section class="appendix informative" id="changes-from-cg">
+<section itemscope itemtype="http://www.w3.org/2004/02/skos/core#" class="appendix informative" id="changes-from-cg">
   <h2>Changes since JSON-LD Community Group Final Report</h2>
-  <ul>
+  <ul itemprop="changeNote">
     <li><a>Lists</a> may now have items which are themselves <a>lists</a>.</li>
     <li>Values of <code>@type</code>, or an alais of <code>@type</code>, may now have their <code>@container</code> set to <code>@set</code>
       to ensure that <code>@type</code> members are always represented as an array. This
